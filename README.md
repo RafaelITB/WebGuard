@@ -194,6 +194,34 @@ Si deseas configurar un sistema de subida de archivos, debes usar el archivo `up
   <input type="file" name="file" required>
 </form>
 ```
+### Instalar modulos y programas adicionales
+
+si necesitas instalar programas adiconales o modulos de apache, puedes añadirlos en el archivo ```Dockerfile```.
+
+Si es un programa, revisa el nombre del mismo en los repositorios de debian añadelo en la lista que empieza con ```RUN apt-get update``` y recuerda seguir la estrucura añadiendo una barra ( \).
+```
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        libpng-dev \
+        libzip-dev \
+        zlib1g-dev \
+        libonig-dev \
+        curl \
+        libapache2-mod-security2 \
+        modsecurity-crs \
+        libapache2-mod-evasive \
+        ...
+```
+si es un modulo de apache, en el mismo archivo, dirigete al apartado de "configure apache" y añade el nombre en la linea que empieza por ```RUN a2enmod```
+
+```
+# Configure Apache
+RUN a2enmod rewrite headers ssl evasive security2
+```
+
+### Actualizar programas y modulos
+
+Cuando arrancas los contenedores de docker, el mismo Docker buscará la versión más actual de todos los programas que usa y de todos los modulos que instala, por lo tanto basta con reiniciar las maquinas de vez en cuando para actualizar todo, y para ello tenemos el script ```restart.sh``` que facilitará hacerlo.
 
 ## contribuciones
 
