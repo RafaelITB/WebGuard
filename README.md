@@ -40,34 +40,39 @@ Docker y Docker compose instalados
 ## Estructura de archivos
 
 ```
+WebGuard/
 ├── Dockerfile
-├── conf
-│   ├── apache2.conf
-│   ├── lynis-cron
-│   ├── mod-evasive.conf
-│   ├── security.conf
-│   ├── security2.conf
-│   └── updates.sh
 ├── docker-compose.yml
-├── dump
-│   └── myDb.sql
 ├── restart.sh
+├── conf
+│   ├── apache2.conf
+│   ├── mod-evasive.conf
+│   ├── security.conf
+│   └── security2.conf
+├── dump
+│   └── myDb.sql
 └── www
-    ├── css
-    │   └── styles.css
-    ├── dashboard
-    │   └── index.html
-    ├── img
-    │   └── ...
-    ├── includes
-    │   └── config.php
-    ├── index.html
-    ├── js
-    │   └── ...
-    ├── login.php
-    ├── register.php
-    └── upload
-        └── upload.php
+   ├── index.html
+   ├── infra.html
+   ├── desarrollo.html
+   ├── desarrollo2.html
+   ├── desarrollo3.html
+   ├── web.html
+   ├── css
+   │   └── styles.css
+   ├── login.php
+   ├── register.php
+   ├── dashboard
+   │   └── index.html
+   ├── img
+   │   └── ...
+   ├── includes
+   │   └── config.php
+   ├── js
+   │   ├── auth.js
+   │   └── main.js
+   └── upload
+       └── upload.php
 ```
 En la raíz se encuentran los archivos `Dockerfile` y `docker-compose`, además de un pequeño script para iniciar y reiniciar los contenedores rápidamente. Adicionalmente, hemos dividido el resto de los archivos en `/conf`, `/dump` y `/www`:
 - **/conf**: Contiene todos los archivos de configuración que se incluirán en los contenedores una vez se inicien los Docker. Tenerlos organizados de esta manera facilita la modificación de la configuración según las necesidades.
