@@ -72,7 +72,7 @@ Docker y Docker compose instalados
 En la raíz se encuentran los archivos `Dockerfile` y `docker-compose`, además de un pequeño script para iniciar y reiniciar los contenedores rápidamente. Adicionalmente, hemos dividido el resto de los archivos en `/conf`, `/dump` y `/www`:
 - **/conf**: Contiene todos los archivos de configuración que se incluirán en los contenedores una vez se inicien los Docker. Tenerlos organizados de esta manera facilita la modificación de la configuración según las necesidades.
 - **/dump**: Un directorio con un solo archivo que sirve como punto de restauración de la base de datos. Este archivo no debe ser modificado.
-- **/www**: Contiene los archivos de la web, como `.html`, `.css`, `.js` y `.php`. Por defecto, incluye nuestra web como ejemplo funcional. Este directorio está directamente vinculado a los contenedores, por lo que los cambios se aplican instantáneamente.
+- **/www**: Contiene los archivos de la web, como `.html`, `.css`, `.js` y `.php`. Por defecto, incluye nuestra web como ejemplo funcional y es dodnde podrás crear la web a tu gusto. Este directorio está directamente vinculado a los contenedores, por lo que los cambios se aplican instantáneamente.
 
 
 ## Instalación
