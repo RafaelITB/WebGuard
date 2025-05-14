@@ -44,6 +44,7 @@ WebGuard/
 ├── Dockerfile
 ├── docker-compose.yml
 ├── restart.sh
+├── .env
 ├── conf
 │   ├── apache2.conf
 │   ├── mod-evasive.conf
