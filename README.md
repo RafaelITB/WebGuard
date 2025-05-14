@@ -119,7 +119,7 @@ $pass = 'webguard123'; // CAMBIAR: contraseña del usuario
 ```
 Podrás ver los usuarios que se registren en phpMyAdmin. Por defecto, son necesarios los campos `username`, `email` y `password`. Las contraseñas se guardan de forma encriptada y se utiliza el nombre de usuario como clave.
 
-el login por defecto te redirige al archivo `./dashboar/index.html`
+el login por defecto te redirige al archivo `./dashboard/index.html`
 ### Configuración de HTTPS
 
 Para hacer que tu web funcione por HTTPS, primero obtén un certificado SSL. Hay muchas formas de hacerlo dependiendo de tus necesidades.
