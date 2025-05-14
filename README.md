@@ -68,9 +68,6 @@ WebGuard/
    │   └── ...
    ├── includes
    │   └── config.php
-   ├── js
-   │   ├── auth.js
-   │   └── main.js
    └── upload
        └── upload.php
 ```
@@ -108,6 +105,20 @@ Recuerda que el puerto `8080` **no** debe ser accesible para los usuarios, por l
 
 ## Guía de uso
 
+### Cómo usar el login y registro por defecto
+
+Una vez instalado, si has modificado la contraseña de phpMyAdmin y de SQL, el login y registro por defecto que incluye el proyecto no funcionarán. Debes modificar el inicio de ambos archivos (`login.php` y `register.php`), indicando las credenciales correctas de tu instalación.
+
+```bash
+// CONFIGURACIÓN DE BASE DE DATOS
+$host = 'db';       // CAMBIAR: IP o hostname del servidor MySQL
+$dbname = 'ymr';    // CAMBIAR: nombre de la base de datos
+$user = 'user';     // CAMBIAR: usuario de la base de datos
+$pass = 'webguard123'; // CAMBIAR: contraseña del usuario
+```
+Podrás ver los usuarios que se registren en phpMyAdmin. Por defecto, son necesarios los campos `username`, `email` y `password`. Las contraseñas se guardan de forma encriptada y se utiliza el nombre de usuario como clave.
+
+el login por defecto te redirige al archivo `./dashboar/index.html`
 ### Configuración de HTTPS
 
 Para hacer que tu web funcione por HTTPS, primero obtén un certificado SSL. Hay muchas formas de hacerlo dependiendo de tus necesidades.
@@ -172,19 +183,6 @@ Luego, entra en el archivo `./conf/apache2.conf` y dirígete al final del mismo,
 # </IfModule>
 ```
 El apartado comentado de `<VirtualHost *:80>` sirve para redirigir las comunicaciones que lleguen por el puerto 80 al 443, para que usen HTTPS. Si lo prefieres, puedes quitarlo y desactivar el puerto al completo comentando la línea `- "0.0.0.0:${APACHE_PORT}:80"` en el paso anterior.
-
-### Cómo usar el login y registro por defecto
-
-Una vez instalado, si has modificado la contraseña de phpMyAdmin y de SQL, el login y registro por defecto que incluye el proyecto no funcionarán. Debes modificar el inicio de ambos archivos (`login.php` y `register.php`), indicando las credenciales correctas de tu instalación.
-
-```bash
-// CONFIGURACIÓN DE BASE DE DATOS
-$host = 'db';       // CAMBIAR: IP o hostname del servidor MySQL
-$dbname = 'ymr';    // CAMBIAR: nombre de la base de datos
-$user = 'user';     // CAMBIAR: usuario de la base de datos
-$pass = 'webguard123'; // CAMBIAR: contraseña del usuario
-```
-Podrás ver los usuarios que se registren en phpMyAdmin. Por defecto, son necesarios los campos `username`, `email` y `password`. Las contraseñas se guardan de forma encriptada y se utiliza el nombre de usuario como clave.
 
 ### Configurar subida de archivos
 
