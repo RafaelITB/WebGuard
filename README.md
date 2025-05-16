@@ -39,7 +39,7 @@ Docker y Docker compose instalados
 
 ## Estructura de archivos
 
-```
+```console
 WebGuard/
 ├── Dockerfile
 ├── docker-compose.yml
@@ -85,15 +85,12 @@ cd webguard
 ```
 - Antes de iniciar el servidor web, modifica las contraseñas por defecto de MySQL y phpMyAdmin en el archivo `.env`. Para evitar conflictos, usa la misma contraseña en las tres líneas. Si deseas modificar los nombres de los usuarios, recuerda crearlos en el `Dockerfile`.
 ```bash
-./Webguard/.env
-____________________________
 MYSQL_PASSWORD=TuContraseña         
 MYSQL_ROOT_PASSWORD=TuContraseña
 PMA_PASSWORD=TuContraseña
 ```
 - Ejecuta el script **restart.sh**. Recuerda usar el usuario **root** para ejecutarlo. Este mismo comando sirve para reiniciar el servidor web, mantener todo actualizado y aplicar nuevas configuraciones.
 ```bash
-./restart.sh
 bash restart.sh
 ```
 - Listo. Ya puedes acceder a la web por defecto buscando la IP de tu máquina o con `localhost` en un navegador. Si entras por el puerto `8080`, accederás a la web de phpMyAdmin para configurar las bases de datos.
@@ -123,7 +120,7 @@ el login por defecto te redirige al archivo `./dashboard/index.html`
 Para hacer que tu web funcione por HTTPS, primero obtén un certificado SSL. Hay muchas formas de hacerlo dependiendo de tus necesidades.
 
 Luego de obtener los certificados, dirígete al archivo `docker-compose.yml` y descomenta la siguiente línea para abrir el puerto 443 en el contenedor:
-```
+```yaml
     www:
         build: 
             context: .
@@ -158,28 +155,28 @@ Luego de obtener los certificados, dirígete al archivo `docker-compose.yml` y d
 
 Luego, entra en el archivo `./conf/apache2.conf` y dirígete al final del mismo, donde encontrarás varias líneas comentadas. Descoméntalas y especifica tu dominio y tu certificado donde se indique. Es importante poner el certificado completo en lugar del path al archivo que lo contiene.
 
-```
-# <IfModule mod_ssl.c>
-#     <VirtualHost *:443>
-#         ServerAdmin <tu dominio>
-#         DocumentRoot /var/www/html
-#         ServerName <tu dominio>
-# 
-#         SSLEngine on
-#         SSLCertificate <tu certificado>
-#         SSLCertificateKey <tu certificado>
-#         SSLCertificateChain <tu certificado>
-# 
-#         <Directory /var/www/html>
-#             AllowOverride All
-#             Require all granted
-#         </Directory>
-#     </VirtualHost>
+```apacheconf
+<IfModule mod_ssl.c>
+    <VirtualHost *:443>
+        ServerAdmin <tu dominio>
+        DocumentRoot /var/www/html
+        ServerName <tu dominio>
+
+        SSLEngine on
+        SSLCertificate <tu certificado>
+        SSLCertificateKey <tu certificado>
+        SSLCertificateChain <tu certificado>
+
+        <Directory /var/www/html>
+            AllowOverride All
+            Require all granted
+        </Directory>
+    </VirtualHost>
 #     <VirtualHost *:80>
 #         ServerName <tu dominio>
 #         Redirect permanent / https://<tu dominio>/
 #     </VirtualHost>
-# </IfModule>
+</IfModule>
 ```
 El apartado comentado de `<VirtualHost *:80>` sirve para redirigir las comunicaciones que lleguen por el puerto 80 al 443, para que usen HTTPS. Si lo prefieres, puedes quitarlo y desactivar el puerto al completo comentando la línea `- "0.0.0.0:${APACHE_PORT}:80"` en el paso anterior.
 
@@ -228,7 +225,7 @@ document.getElementById('uploadForm').addEventListener('submit', function(e) {
 si necesitas instalar programas adiconales o modulos de apache, puedes añadirlos en el archivo ```Dockerfile```.
 
 Si es un programa, revisa el nombre del mismo en los repositorios de debian añadelo en la lista que empieza con ```RUN apt-get update``` y recuerda seguir la estrucura añadiendo una barra ( \).
-```
+```Dockerfile
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         libpng-dev \
@@ -278,7 +275,7 @@ document.getElementById('uploadForm').addEventListener('submit', function(e) {
 ```
 si es un modulo de apache, en el mismo archivo, dirigete al apartado de "configure apache" y añade el nombre en la linea que empieza por ```RUN a2enmod```
 
-```
+```Dockerfile
 # Configure Apache
 RUN a2enmod rewrite headers ssl evasive security2
 ```
