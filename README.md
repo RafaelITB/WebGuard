@@ -56,8 +56,6 @@ WebGuard/
    ├── index.html
    ├── infra.html
    ├── desarrollo.html
-   ├── desarrollo2.html
-   ├── desarrollo3.html
    ├── web.html
    ├── css
    │   └── styles.css
