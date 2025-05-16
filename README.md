@@ -230,48 +230,8 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         libpng-dev \
         libzip-dev \
-        zlib1g-dev \<form id="uploadForm" action="upload/upload.php" method="POST" enctype="multipart/form-data">
-  <input type="file" name="file" id="fileInput" required onchange="updateFilename()">
-  <input type="hidden" name="filename" id="filenameInput">
-  <button type="submit">Upload</button>
-</form>
-<div id="result"></div>
-<script>
-function updateFilename() {
-  const fileInput = document.getElementById('fileInput');
-  const filenameInput = document.getElementById('filenameInput');
-  const file = fileInput.files[0];
-  if (file) {
-    let name = file.name.split('.').slice(0, -1).join('.');
-    name = name.replace(/[^a-zA-Z0-9_-]/g, '_');
-    filenameInput.value = name;
-  }
-}
- 
-document.getElementById('uploadForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const formData = new FormData(this);
-
-  fetch(this.action, {
-    method: 'POST',
-    body: formData
-  })
-  .then(response => response.text())
-  .then(text => {
-    document.getElementById('result').innerText = text;
-  })
-  .catch(() => {
-    document.getElementById('result').innerText = 'Error en la subida';
-  });
-});
-</script>
-
-        libonig-dev \
-        curl \
-        libapache2-mod-security2 \
-        modsecurity-crs \
-        libapache2-mod-evasive \
-        ...
+        zlib1g-dev \
+        ... 
 ```
 si es un modulo de apache, en el mismo archivo, dirigete al apartado de "configure apache" y añade el nombre en la linea que empieza por ```RUN a2enmod```
 
