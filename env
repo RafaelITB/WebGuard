@@ -1,0 +1,24 @@
+## Database Configuration
+MYSQL_DATABASE=ymr 
+MYSQL_USER=user 
+MYSQL_HOST=db
+# change Mysql password and root password
+MYSQL_PASSWORD=webguard123
+MYSQL_ROOT_PASSWORD=webguard123
+
+## PHPMyAdmin Configuration
+PMA_HOST=db
+PMA_USER=root
+# change phpmyadmin password
+PMA_PASSWORD=webguard123
+
+## Ports Configuration (for development only)
+APACHE_PORT=80
+MYSQL_PORT=3306
+PHPMYADMIN_PORT=8080
+
+## PHP Configuration
+PHP_MEMORY_LIMIT=256M
+PHP_MAX_EXECUTION_TIME=30
+PHP_UPLOAD_MAX_FILESIZE=20M
+PHP_POST_MAX_SIZE=20M
