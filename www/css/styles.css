@@ -1,0 +1,369 @@
+/* Reset de algunos estilos predeterminados */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Estilos del Header */
+header {
+    background-color: #333;
+    padding: 10px 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+/* Logo alineado a la izquierda */
+nav .logo {
+    height: 50px;
+    width: auto;
+}
+
+/* Ajustar el menú al centro */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+
+/* Cada elemento de la lista */
+nav ul li {
+    display: flex;
+    align-items: center;
+}
+
+/* Estilo de enlaces y botón */
+nav ul li a,
+nav ul li button {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    background-color: #444;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    /* Transición suave */
+}
+
+nav ul li a:hover,
+nav ul li button:hover {
+    background-color: #555;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-top: 10px;
+}
+
+/* CONTENEDOR DE DESCRIPCIÓN */
+.container_intro {
+    width: 100%;
+    padding: 10px 72px;
+    height: 505px;
+}
+
+.container_intro_infra {
+    width: 100%;
+    padding: 10px 72px;
+    height: 775px;
+}
+
+/* SECCIONES */
+.main-content,
+.about-section,
+.services-section,
+.contact-section {
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    width: 20%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.main-content-description {
+    padding: 0;
+    background-color: #ffffff;
+    border-radius: 8px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 20px;
+}
+
+/* Estilos de imágenes */
+.mi-imagen-1,
+.mi-imagen-3 {
+    margin-left: 20px;
+}
+
+.mi-imagen-2,
+.mi-imagen-4 {
+    margin-left: 50px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: max-content;
+    margin: auto;
+}
+
+.grid-container img {
+    width: 250px;
+    height: 250px;
+}
+
+.grid2-container {
+    width: 600px;
+    height: 400px;
+}
+
+#flex {
+    display: flex;
+    padding: 10px;
+}
+
+.main-color-bar {
+    width: 100%;
+    height: 60px;
+    margin: 0;
+    background-color: #333;
+}
+
+.main-little-description {
+    width: 80%;
+    height: 60px;
+    margin: 0;
+    border-radius: 8px;
+    border: 2px solid black;
+    padding-left: 10px;
+}
+
+.main-little-description2 {
+    width: 80%;
+    height: 90px;
+    margin: 0;
+    border-radius: 8px;
+    border: 2px solid black;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+.main-little-description-div {
+    padding-left: 200px;
+    padding-top: 40px;
+}
+
+.main-little-description-div-infra {
+    padding-left: 200px;
+    padding-top: 20px;
+}
+
+.main-big-description-div {
+    display: flex;
+    flex-direction: column;
+    padding-top: 0;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    margin-top: 2em;
+    padding: 1em;
+    background-color: #333;
+    color: white;
+}
+
+/* SECCIÓN DE DESARROLLO */
+.desarrollo {
+    width: 75vw;
+    height: 78vh;
+    min-height: 78vh;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+.desarrollo h1 {
+    font-size: 40px;
+    /* Aumentar tamaño del título */
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.desarrollo p {
+    font-size: 25px;
+    /* Aumentar tamaño de texto */
+    line-height: 1.8;
+    /* Mejorar legibilidad */
+    color: #666;
+    /* Color de texto más suave */
+    text-align: justify;
+}
+
+.desarrollo h2 {
+    font-size: 26px;
+    /* Aumentar tamaño de subtítulos */
+    color: #444;
+    margin-top: 30px;
+    border-left: 4px solid #007BFF;
+    /* Color de borde más atractivo */
+    padding-left: 10px;
+}
+
+.desarrollo h3 {
+    font-size: 20px;
+    /* Aumentar tamaño de subtítulos de tercer nivel */
+    color: #555;
+    margin-top: 20px;
+}
+
+.desarrollo ol,
+.desarrollo ul {
+    margin: 20px 0;
+    padding-left: 20px;
+}
+
+.desarrollo li {
+    font-size: 25px;
+    /* Aumentar tamaño de texto en listas */
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+/* GALERÍA DE IMÁGENES */
+.galeria {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    /* Aumentar espacio entre imágenes */
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.galeria img {
+    width: 320px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    /* Bordes más redondeados */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    /* Añadir transición a la sombra */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.galeria img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    /* Sombra más pronunciada al pasar el ratón */
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .desarrollo {
+        padding: 20px;
+    }
+
+    .galeria img {
+        width: 100%;
+        height: auto;
+    }
+
+    nav ul {
+        margin-left: 0;
+        /* Ajustar el menú en pantallas pequeñas */
+        gap: 20px;
+        /* Reducir el espacio entre elementos del menú */
+    }
+
+    nav ul li {
+        flex-direction: column;
+        /* Cambiar a columna en pantallas pequeñas */
+    }
+}
+
+/* Botones */
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    /* Color de fondo */
+    color: white;
+    /* Color del texto */
+    text-decoration: none;
+    /* Sin subrayado */
+    border-radius: 0px;
+    /* Bordes redondeados */
+    transition: background-color 0.3s;
+    /* Transición suave */
+    cursor: pointer;
+}
+
+.button2 {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    /* Color de fondo */
+    color: white;
+    /* Color del texto */
+    text-decoration: none;
+    /* Sin subrayado */
+    border-radius: 0px;
+    /* Bordes redondeados */
+    transition: background-color 0.3s;
+    /* Transición suave */
+    cursor: pointer;
+}
+
+
+.button:hover {
+    background-color: #0056b3;
+    /* Color de fondo al pasar el ratón */
+}
+
+.button2:hover {
+    background-color: #0056b3;
+    /* Color de fondo al pasar el ratón */
+}
+
+.button1-container {
+    display: flex;
+    /* Usar flexbox para alinear los botones */
+    justify-content: space-between;
+    /* Espacio entre los botones */
+    width: 100%;
+    /* Ancho del contenedor */
+    margin: 0px;
+    /* Centrar el contenedor en la página */
+
+}
+
+.button2-container {
+    width: 100%;
+    /* Ancho del contenedor */
+    padding-left: 1000px;
+}

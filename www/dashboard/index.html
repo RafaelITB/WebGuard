@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard Mejorado</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f3f4f6;
+      color: #374151;
+    }
+
+    header {
+      width: 100%;
+      height: 64px;
+      background-color: white;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      font-weight: 600;
+      font-size: 14px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .header-left .logo {
+      font-size: 20px;
+      font-weight: 700;
+      color: #2563eb;
+      user-select: none;
+      letter-spacing: 1.1px;
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 16px;
+      user-select: none;
+    }
+
+    .nav-tabs button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 6px;
+      color: #6b7280;
+      transition: background-color 0.2s, color 0.2s;
+      font-weight: 600;
+    }
+    .nav-tabs button:hover {
+      background-color: #eff6ff;
+      color: #2563eb;
+    }
+    .nav-tabs button.active {
+      background-color: #2563eb;
+      color: white;
+      box-shadow: 0 2px 6px rgba(37,99,235,0.6);
+      pointer-events: none;
+    }
+
+    .search-container {
+      position: relative;
+      width: 256px;
+    }
+
+    .search-container input {
+      width: 100%;
+      height: 36px;
+      padding-left: 32px;
+      background-color: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 4px;
+      font-size: 14px;
+      transition: border-color 0.2s;
+    }
+
+    .search-container input:focus {
+      outline: none;
+      border-color: #2563eb;
+      background-color: white;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #9ca3af;
+      font-size: 16px;
+      pointer-events: none;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      user-select: none;
+    }
+
+    .notification-button {
+      position: relative;
+      padding: 8px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #4b5563;
+      font-size: 18px;
+      transition: background-color 0.2s, color 0.2s;
+      border-radius: 9999px;
+    }
+
+    .notification-button:hover {
+      background-color: #eff6ff;
+      color: #2563eb;
+    }
+
+    .notification-dot {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      width: 10px;
+      height: 10px;
+      background-color: #ef4444;
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px white;
+    }
+
+    .clock {
+      font-size: 14px;
+      color: #4b5563;
+      font-variant-numeric: tabular-nums;
+      min-width: 80px;
+      text-align: center;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+    }
+
+    .avatar {
+      width: 36px;
+      height: 36px;
+      background-color: #2563eb;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 16px;
+      user-select: none;
+      box-shadow: 0 0 6px #2563ebaa;
+      text-transform: uppercase;
+    }
+
+    .user-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 100px;
+      white-space: nowrap;
+    }
+
+    .user-text .name {
+      margin: 0;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .user-text .role {
+      margin: 0;
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    .logout-button {
+      background-color: #ef4444;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background-color 0.3s;
+      user-select: none;
+    }
+
+    .logout-button:hover {
+      background-color: #dc2626;
+    }
+
+    main {
+      margin-top: 80px;
+      margin-left: 24px;
+      margin-right: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .info-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: box-shadow 0.3s;
+    }
+
+    .card:hover {
+      box-shadow: 0 6px 14px rgb(37 99 235 / 0.35);
+      cursor: default;
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #2563eb;
+      user-select: none;
+    }
+
+    .card-value {
+      font-size: 28px;
+      font-weight: 700;
+      color: #111827;
+      user-select: text;
+    }
+
+    .card-subtext {
+      margin-top: 4px;
+      font-size: 12px;
+      color: #6b7280;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <div class="logo" title="Dashboard">Mi Dashboard</div>
+      <nav class="nav-tabs" role="navigation" aria-label="Navegación principal">
+        <button class="active" type="button" aria-current="page">Inicio</button>
+        <button type="button">Estadísticas</button>
+        <button type="button">Usuarios</button>
+        <button type="button">Ajustes</button>
+      </nav>
+    </div>
+
+    <div class="search-container" role="search">
+      <span class="search-icon" aria-hidden="true">🔍</span>
+      <input type="search" placeholder="Buscar contenido..." aria-label="Buscar contenido" />
+    </div>
+    
+    <div class="header-actions" role="group" aria-label="Acciones de usuario">
+      <button class="notification-button" aria-label="Notificaciones" title="Notificaciones">
+        🔔
+        <span class="notification-dot"></span>
+      </button>
+
+      <div class="clock" id="clock" aria-live="polite" aria-atomic="true">--:--:--</div>
+
+      <div class="user-info" aria-label="Información del usuario">
+        <div class="avatar" aria-hidden="true">U</div>
+        <div class="user-text">
+          <p class="name">Usuario</p>
+          <p class="role">Administrador</p>
+        </div>
+        <button class="logout-button" id="logoutBtn" aria-label="Cerrar sesión">Cerrar sesión</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="info-cards" aria-label="Información destacada">
+      <article class="card" tabindex="0">
+        <div class="card-title">Usuarios Activos</div>
+        <div class="card-value">1,248</div>
+        <div class="card-subtext">En los últimos 24 horas</div>
+      </article>
+      <article class="card" tabindex="0">
+        <div class="card-title">Nuevas Ventas</div>
+        <div class="card-value">312</div>
+        <div class="card-subtext">Desde la última semana</div>
+      </article>
+      <article class="card" tabindex="0">
+        <div class="card-title">Tasa de Retención</div>
+        <div class="card-value">67.5%</div>
+        <div class="card-subtext">Comparado con mes anterior</div>
+      </article>
+      <article class="card" tabindex="0">
+        <div class="card-title">Tickets Pendientes</div>
+        <div class="card-value">24</div>
+        <div class="card-subtext">Esperando atención</div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    // Función para obtener cookie por nombre
+    function getCookie(name) {
+      const cookies = document.cookie.split(';');
+      for(let i=0; i < cookies.length; i++) {
+        const c = cookies[i].trim();
+        if (c.indexOf(name + "=") === 0) {
+          return c.substring((name + "=").length, c.length);
+        }
+      }
+      return "";
+    }
+
+    // Función para borrar cookie
+    function deleteCookie(name) {
+      document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    }
+
+    // Verificar si cookie loggedIn existe y es "true"
+    if (getCookie("loggedIn") !== "true") {
+      // Si no está, redirigir a login
+      window.location.href = '../login.php'; // Ajustar la ruta si es diferente
+    }
+
+    // Logout: borrar cookie y redirigir a login
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      deleteCookie("loggedIn");
+      alert("Has cerrado sesión correctamente.");
+      window.location.href = '../login.php'; // Ajustar la ruta si es diferente
+    });
+
+    // Reloj en tiempo real
+    function updateClock() {
+      const now = new Date();
+      const clock = document.getElementById("clock");
+      const hours = String(now.getHours()).padStart(2, "0");
+      const minutes = String(now.getMinutes()).padStart(2, "0");
+      const seconds = String(now.getSeconds()).padStart(2, "0");
+      clock.textContent = `${hours}:${minutes}:${seconds}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Navegación simple con clases active
+    const tabs = document.querySelectorAll('.nav-tabs button');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+      });
+    })
+  </script>
+</body>
+</html>
+

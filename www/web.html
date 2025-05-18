@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebGuard</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/png" href="img/logo-fondo.png">
+  <style>
+    .flex-container {
+      display: flex;
+      gap: 2rem;
+      width: 90vw;
+      height: 70vh;
+      box-sizing: border-box;
+      padding: 2rem;
+    }
+    .container, .info-box {
+      flex: 1 1 0;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      overflow-y: auto;
+      height: 100%;
+    }
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    ul {
+      padding-left: 1.2rem;
+    }
+    .line {
+      margin-bottom: 1rem;
+      font-size: 20px;
+    }
+    strong {
+      color: #2980b9;
+    }
+</style>
+</head>
+
+<body>
+
+<header style="display: flex; justify-content: space-between; align-items: center; padding: 10px 30px; background-color: #333;">
+
+    <!-- Logo a la izquierda -->
+    <div style="display: flex; align-items: center;">
+        <img src="img/logo.png" alt="Logo del equipo" style="width: 90px;">
+    </div>
+
+    <!-- Menú centrado con botones uniformes -->
+    <ul style="display: flex; list-style: none; gap: 20px; margin: 0; padding: 0;">
+        <li><a href="index.html"><button style="width: 160px; height: 60px; color: white; text-decoration: none; background-color: #444; border: none; border-radius: 5px; font-size: 14px; cursor: pointer; transition: background-color 0.3s ease;">Inicio</button></a></li>
+        <li><a href="infra-honeypot.html"><button style="width: 160px; height: 60px; color: white; text-decoration: none; background-color: #444; border: none; border-radius: 5px; font-size: 14px; cursor: pointer; transition: background-color 0.3s ease;">Infra Honeypot</button></a></li>
+        <li><a href="infra-proyecto.html"><button style="width: 160px; height: 60px; color: white; text-decoration: none; background-color: #444; border: none; border-radius: 5px; font-size: 14px; cursor: pointer; transition: background-color 0.3s ease;">Infra Proyecto</button></a></li>
+        <li><a href="desarrollo.html"><button style="width: 160px; height: 60px; color: white; text-decoration: none; background-color: #444; border: none; border-radius: 5px; font-size: 14px; cursor: pointer; transition: background-color 0.3s ease;">Desarrollo</button></a></li>
+        <li><a href="web.html"><button style="width: 160px; height: 60px; color: white; text-decoration: none; background-color: #444; border: none; border-radius: 5px; font-size: 14px; cursor: pointer; transition: background-color 0.3s ease;">Web</button></a></li>
+    </ul>
+
+    <!-- Login y Registro a la derecha -->
+    <div style="display: flex; gap: 10px;">
+        <a href="login.php"><button style="width: 120px; height: 60px; color: white; text-decoration: none; background-color: #444; border: none; border-radius: 5px; font-size: 14px; cursor: pointer; transition: background-color 0.3s ease;">Login</button></a>
+        <a href="register.php"><button style="width: 120px; height: 60px; color: white; text-decoration: none; background-color: #444; border: none; border-radius: 5px; font-size: 14px; cursor: pointer; transition: background-color 0.3s ease;">Registrate</button></a>
+    </div>
+
+</header>
+
+    <div class="container_intro_infra">
+        <section class="main-content-description">
+            <section class="main-color-bar">
+                <center style="padding-top: 15px; color:white; font-size: 20px;">
+                    <h1>Esta web ésta hosteada en Webguard, por lo que...</h1>
+                </center>
+            </section>
+<!-- inicio -->
+          <div class="flex-container">
+            <div class="container">
+              <h2>Por defecto ésta web está defendida ante:</h2>
+              <ul>
+                <li class="line"><strong>Exposición de información:</strong> Toda la información que suele ser pública por defecto, como el software utilizado, sus versiones y archivos de configuración, en WebGuard está completamente ocultada.</li>
+                <li class="line"><strong>Vulnerabilidades de software:</strong> Gracias a la estructura basada en Docker, basta con reiniciar los contenedores para actualizar todo el software a las últimas versiones.</li>
+                <li class="line"><strong>XSS / Inyecciones SQL / Archivos maliciosos:</strong> WebGuard está preconfigurado para filtrar todo lo que se suba a la web y bloquear cualquier contenido malintencionado. Eres libre de crear formularios con mayor seguridad.</li>
+                <li class="line"><strong>DDoS y escaneos web:</strong> Usando herramientas preconfiguradas, WebGuard bloqueará cualquier IP que realice múltiples solicitudes maliciosas. Puedes personalizar la cantidad de solicitudes y la duración del bloqueo según tus necesidades.</li>
+                <li class="line"><strong>Comprometer la máquina física:</strong> Al estar aislado en contenedores Docker, incluso si un atacante compromete la web, no podrá acceder al sistema físico donde se aloja el servidor web.</li>
+              </ul>
+            </div>
+
+            <div class="info-box">
+              <h2>Por defecto incluye:</h2><br>
+              <br><ul>
+                <li class="line"><strong>Infraestructura de MySQL: </strong>La web está conectada con una base de datos de Mysql que tambien puedes administrar usando PhpMyAdmin entrando por el puerto 8080.</li>
+                <li class="line"><strong>Login y registro funcionales:</strong> Página de login y registro funcionales que guardan las credenciales en la base de datos encriptando la contraseña.</li>
+                <br>
+                <li class="line"><strong>Infraestructura securizada de subida de archivos: </strong>Sistema de subida de archivos que filtran por tipo y comprueban que sean reales.</li>
+                <br><br>
+                <form id="uploadForm" action="upload/upload.php" method="POST" enctype="multipart/form-data" style="display:flex; flex-direction: column; width: 500px; margin: 20px auto; padding: 20px; border: 2px solid #e0e0e0; border-radius: 8px; background: #f5f5f5;">
+                  <input type="file" name="file" id="fileInput" required onchange="updateFilename()" style="margin-bottom: 15px; padding: 8px; border: 1px solid #ccc; border-radius: 4px; cursor: pointer;">
+                  <input type="hidden" name="filename" id="filenameInput">
+                  <button type="submit" style="background-color: #3498db; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; transition: background-color 0.3s;">
+                    Upload
+                  </button>
+                </form>
+
+                <div id="result" style="width: 300px; margin: 10px auto; font-family: Arial, sans-serif; font-size: 14px; color: #333; text-align: center;"></div>
+
+                <script>
+                function updateFilename() {
+                  const fileInput = document.getElementById('fileInput');
+                  const filenameInput = document.getElementById('filenameInput');
+                  const file = fileInput.files[0];
+                  if (file) {
+                    let name = file.name.split('.').slice(0, -1).join('.');
+                    name = name.replace(/[^a-zA-Z0-9_-]/g, '_');
+                    filenameInput.value = name;
+                  }
+                }
+
+                document.getElementById('uploadForm').addEventListener('submit', function(e) {
+                  e.preventDefault();
+                  const formData = new FormData(this);
+
+                  fetch(this.action, {
+                    method: 'POST',
+                    body: formData
+                  })
+                  .then(response => response.text())
+                  .then(text => {
+                    document.getElementById('result').innerText = text;
+                  })
+                  .catch(() => {
+                    document.getElementById('result').innerText = 'Error en la subida';
+                  });
+                });
+                </script>
+              </ul>
+            </div>
+          </div>
+<!-- fin -->
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 WebGuard, Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+
+</html>

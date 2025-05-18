@@ -7,9 +7,11 @@
     <title>WebGuard</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" type="image/png" href="img/logo-fondo.png">
+    <script src="/mi_empresa/js/auth.js"></script>
 </head>
 
 <body>
+
 <header style="display: flex; justify-content: space-between; align-items: center; padding: 10px 30px; background-color: #333;">
 
     <!-- Logo a la izquierda -->
@@ -33,37 +35,57 @@
     </div>
 
 </header>
-<div class="container_intro" style="min-height: 80vh;">
-    <section class="main-content-description">
-        <section class="main-color-bar" style="color:white; font-size: 20px;">
-            <h1 style="text-align: center; padding-top: 15px;">Webguard</h1>
-	    <section style="display: grid; grid-template-columns: repeat(3, 1fr); justify-items: center; align-items: center; gap: 40px; padding: 10px;">
-		<a href="#" onclick="window.open('https://github.com/telekom-security/tpotce', '_blank'); return false;" oncontextmenu="window.open('https://serverymr.ddnsgeek.com:64297', '_blank'); return false;">
-                	<img class="mi-imagen-1" src="img/tpot.png" alt="cargando" style="width: 300px; height: 300px; margin: 20px;" />
-                </a>
-		<a href="index.html">
-	                <img src="img/página.png" alt="cargando" style="width: 300px; height: 300px; margin: 20px;" />
-		</a>
-		<a href="https://docs.docker.com/engine/install/" target="_blank">
-	                <img src="img/docker.png" alt="cargando" style="width: 300px; height: 300px; margin: 20px;"/>
-		</a>
-		<a href="https://github.com/RafaelITB/WebGuard.git" target="_blank">
-	                <img src="img/github.jpg" alt="cargando" style="width: 300px; height: 300px; margin: 20px;" />
-		</a>
-                <a href="https://dev.mysql.com/doc" target="_blank">
-	                <img src="img/mySQL-logo.png" alt="cargando" style="width: 300px; height: 300px; margin: 20px;" />
-		</a>
-                <a href="https://www.phpmyadmin.net/docs/" target="_blank">      
-		        <img src="img/php-logo.png" alt="cargando" style="width: 300px; height: 300px; margin: 20px;" />
-		</a>
-            </section>
-        </section>
-    </section>
-</div>
 
+    <div class="container_intro_infra">
+        <section class="main-content-description">
+            <section class="main-color-bar">
+                <center style="padding-top: 15px; color:white; font-size: 20px;">
+                    <h1>Infraestructura del honeypot:</h1>
+                </center>
+            </section>
+            <div id="flex">
+
+                <div class="grid2-container">
+                    <img height="650px" width="775px" src="img/infraestructura.png" alt="cargando" />
+                </div>
+
+                <div class="main-big-description-div">
+                    <div class="main-little-description-div">
+                        <section class="main-little-description2">
+                            <p style="font-size:25px;">
+                                HoneyPot: Simula un sistema vulnerable para atraer y registrar ataques.
+                            </p>
+                        </section>
+                    </div>
+                    <div style="padding-top: 60px;font-size:25px;" class="main-little-description-div">
+                        <section class="main-little-description2">
+                            <p>
+                                AWS: Permite la conexión al exterior.
+                            </p>
+                        </section>
+                    </div>
+                    <div style="padding-top: 60px;font-size:25px;" class="main-little-description-div">
+                        <section class="main-little-description2">
+                            <p>
+                                VPN: Redirige el tráfico del honeypot a AWS para exponerlo.
+                            </p>
+                        </section>
+                    </div>
+                    <div style="padding-top: 60px;font-size:25px;" class="main-little-description-div">
+                        <section class="main-little-description2">
+                            <p>
+                                DNS: Permite la conexión dinámica con la VPN al AWS actualizando su IP pública.
+                            </p>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
     <footer>
         <p>&copy; 2025 WebGuard, Todos los derechos reservados.</p>
     </footer>
+
 </body>
 
 </html>
